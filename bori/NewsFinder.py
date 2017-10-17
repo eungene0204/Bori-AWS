@@ -28,9 +28,9 @@ class NewsFinder():
         self.model, self.num_feature = self.load_model()
 
     def load_model(self):
-        name = os.path.join(self.module_dir,'word2vec_model','word2vec_model_noun_20170527')
+        name = os.path.join(self.module_dir,'word2vec_model','word2vec_model_noun_20171013')
         model = Word2Vec.load(name)
-        num_feature = 1000
+        num_feature = 300
 
         return model, num_feature
 
