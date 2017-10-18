@@ -22,20 +22,19 @@ class TwitterReader():
 class NewsFinder():
 
     def __init__(self):
-        print("~~~~~~~~~~~~~~~")
         self.module_dir = os.path.dirname(__file__)
-        print("22222222222222222222")
         self.hangul_util = hangul_util()
-        print("3333333333333333333")
         self.rss_parser = rss_parser()
-        print("444444444444444444444")
         self.model, self.num_feature = self.load_model()
-        print("55555555555555555555555555")
 
     def load_model(self):
+        print("11111111111")
         name = os.path.join(self.module_dir,'word2vec_model','word2vec_model_noun_20171013')
+        print("222222222222")
         model = Word2Vec.load(name)
+        print("333")
         num_feature = 300
+        print("44444444444444")
 
         return model, num_feature
 
