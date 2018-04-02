@@ -9,6 +9,16 @@ from .numpy_util import numpy_util
 
 #np.seterr(divide='ignore',invalid='ignore')
 
+
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.DEBUG)
+logger.addHandler(ch)
+
+
 class word2vec_similarity():
     def __init__(self,model,num_features):
         #self.samples = pd.read_csv('../data/twt_test_samples.csv', header = 0, quoting=3, encoding='cp949',
@@ -39,6 +49,8 @@ class word2vec_similarity():
         # check if it is in the model's vocabulary
         twt = twts[0]
         category = twts[1]
+        logger.debug('Twt in word2vec sim:%s', twt)
+        logger.debug('category in word2vec sim:%s', category)
         for word in twt:
             if word in index2word_set:
                 nwords = nwords + 1
@@ -46,6 +58,7 @@ class word2vec_similarity():
            
         if(nwords > 0):
             try:
+                logger.debug('featureVec:')
                 featureVec = np.divide(featureVec, nwords)
             except Exception as e:
                 print(e)

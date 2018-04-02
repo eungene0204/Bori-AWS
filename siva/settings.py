@@ -28,7 +28,7 @@ SECRET_KEY = '7l9z8q5kj+q_+y&6c)r-6-#(!m=pz47$mw7wq=v3+-_fi1^!+j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.36','localhost','14.32.244.35','125.143.191.179',
+ALLOWED_HOSTS = ['localhost','220.118.100.183',
                  'ec2-13-124-241-12.ap-northeast-2.compute.amazonaws.com']
 
 
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
+    'djcelery',
     'rest_framework',
     'bori.apps.BoriConfig'
 ]
@@ -126,3 +128,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
